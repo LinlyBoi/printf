@@ -7,5 +7,6 @@
 int main(void)
 {
 	int len;
+
 	len = _printf("Hello world");
 }
