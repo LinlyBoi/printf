@@ -14,3 +14,24 @@ int _strlen(char *str)
   else
     return (0);
 }
+
+/**
+ * _contains - gets number of unique identifiers
+ *
+ * @str: da string
+ * @c: basically almost always '%'
+ *
+ * Return: number of unique cases of "%*" that aren't "%%"
+ */
+int _contains(char *str, char c)
+{
+  if (*str)
+  {
+   if (*str == c && *(str + 1) != c && *(str - 1) != c)
+     return (1 + _contains(str + 1, c));
+   else
+     return (_contains(str + 1, c));
+  }
+  else
+    return (0);
+}
