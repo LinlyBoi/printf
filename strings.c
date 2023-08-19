@@ -9,7 +9,7 @@
  */
 int _strlen(char *str)
 {
-  if (*str)
+  if (str)
     return (1 + _strlen(str++));
   else
     return (0);
@@ -23,7 +23,7 @@ int _strlen(char *str)
  *
  * Return: number of unique cases of "%*" that aren't "%%"
  */
-int _contains(char *str, char c)
+int _contains(const char *str, char c)
 {
   if (*str)
   {
