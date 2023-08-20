@@ -18,22 +18,18 @@ int _printf(const char *format, ...)
 
 
 	va_start(args, format);
-
 	identifiers = _contains(format, '%');
 	BUFF_SIZE  = _strlen(format) - (identifiers * 2);
 
 	if (!format) /* No string. No laundry */
 		return (0);
-
-
 	i = 0; /*TODO:gotta rename those*/
 	j = 0;
-	buffer = "";
 	while (format)
 	{
 		if ((*format == '%') && (*(format + 1)))
 		{
-			switch (*(format + 1))
+			switch (*(format + 1)) /*this needs to shrink*/
 			{
 				case 's':
 					next = va_arg(args, char*); /*Store string temporarily*/
@@ -42,24 +38,11 @@ int _printf(const char *format, ...)
 					BUFF_SIZE += _strlen(next);
 
 					break;
-				case 'c':
-					/*
-					 * You don't add 1Byte because %c becomes a single char so less to reallocate
-					 * Increment i by 1
-					 */
+				case 'c': /* add 1 byte and i++ */
 					break;
-				case '%':
-					/*
-					 * Something add 1B, shove %, realloc
-					 * increment i by 1
-					 */
+				case '%': /*add 1 byte*/
 					break;
 			}
-			/*
-			 * something something increment i
-			 * by size of argument value
-			 * also no forgor about realloc
-			 */
 		}
 		else
 		{
