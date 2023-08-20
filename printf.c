@@ -1,72 +1,56 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdlib.h>
+#include <unistd.h>
 
+/**
+ * _printf - printf but worse
+ * @format: format string
+ * @...: ???
+ * Return: characters written
+ **/
 int _printf(const char *format, ...)
 {
-	/* For any Iterative Operation */
-	int i, pass_str_len;
+	int i, j;
 	unsigned int identifiers, BUFF_SIZE;
-	char *buffer;
+	char *buffer, *next;
 	va_list args;
 
-	/* Instantiating Buffer Size */
-	BUFF_SIZE  = _strlen(format) - (identifiers * 2);
 
-	/* Shoving args in list */
 	va_start(args, format);
 
-	/* Number of Identifiers that aren't "%%" */
 	identifiers = _contains(format, '%');
+	BUFF_SIZE  = _strlen(format) - (identifiers * 2);
 
-	/* If string is nonexist, die */
-	if (!format)
+	if (!format) /* No string. No laundry */
 		return (0);
 
-	buffer = malloc(BUFF_SIZE);
 
-	/* While string is alive or smth*/
-	while(format)
+	i = 0; /*TODO:gotta rename those*/
+	j = 0;
+	buffer = "";
+	while (format)
 	{
-		/* Detecting identifier in code
-		 * whilst ensuring next char exists
-		 */
-		if ((*format == '%') && (*(format + 1) != '\0'))
+		if ((*format == '%') && (*(format + 1)))
 		{
-			/* Handling depending on char after identifier*/
 			switch (*(format + 1))
 			{
 				case 's':
-					/* Something _strlen() string arg, realloc
-					 * Increment i by strlen or smth
-					 */
+					next = va_arg(args, char*); /*Store string temporarily*/
+					_strcpy(&buffer[j], next);
+					j += _strlen(next);
+					BUFF_SIZE += _strlen(next);
 
-					/* Trying to get length of passed string */
-					pass_str_len = _strlen(va_arg(args, char*));
-
-					/* Incrememnting buffersize to fit new string*/
-					BUFF_SIZE += pass_str_len;
-
-					/* Shoving str values into buffer*/
-
-
-					/* Realloc? pls review*/
-					free(buffer);
-					buffer = malloc(BUFF_SIZE * sizeof(char));
-
-					/* Incrementing iterator i by string length
-					 * So we'd be able to insert at proper
-					 * index in buffer
-					 */
-					i += pass_str_len;
 					break;
 				case 'c':
-					/* Something add 1B to buffer and realloc
+					/*
+					 * You don't add 1Byte because %c becomes a single char so less to reallocate
 					 * Increment i by 1
 					 */
 					break;
 				case '%':
-					/* Something add 1B, shove %, realloc
+					/*
+					 * Something add 1B, shove %, realloc
 					 * increment i by 1
 					 */
 					break;
@@ -79,11 +63,11 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			/* Dereferencing with '*' */
-			*(buffer + i) = *(char *)(format + i);
+			*(buffer + i) = *(format + i);
 			i++;
 		}
 	}
 
+	write(1, buffer, BUFF_SIZE);
 	return (_strlen(buffer));
 }
