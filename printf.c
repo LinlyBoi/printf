@@ -1,30 +1,29 @@
 #include "main.h"
-#include<stdarg.h>
+#include <stdarg.h>
+#include <stdlib.h>
 
 int _printf(const char *format, ...)
 {
 	/* For any Iterative Operation */
-	int i = 0;
+	int i, pass_str_len;
+	unsigned int identifiers, BUFF_SIZE;
+	char *buffer;
+	va_list args;
 
-	/* how many %* that aren't %% */
-	unsigned int identifiers;
-
-	/* Number of Identifiers */
-	identifiers = _contains(format, '%');
-
-	/* Primary Buffer Size */
-	int BUFF_SIZE = _strlen(format) - (identifiers * 2);
-
-	/* Instantiating Buffer */
-	char* buffer[BUFF_SIZE];
+	/* Instantiating Buffer Size */
+	BUFF_SIZE  = _strlen(format) - (identifiers * 2);
 
 	/* Shoving args in list */
-	va_list args;
 	va_start(args, format);
+
+	/* Number of Identifiers that aren't "%%" */
+	identifiers = _contains(format, '%');
 
 	/* If string is nonexist, die */
 	if (!format)
 		return (0);
+
+	buffer = malloc(BUFF_SIZE);
 
 	/* While string is alive or smth*/
 	while(format)
@@ -43,7 +42,7 @@ int _printf(const char *format, ...)
 					 */
 
 					/* Trying to get length of passed string */
-					int pass_str_len = _strlen(va_arg(args, char*));
+					pass_str_len = _strlen(va_arg(args, char*));
 
 					/* Incrememnting buffersize to fit new string*/
 					BUFF_SIZE += pass_str_len;
@@ -80,11 +79,11 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			/* ERROR SCREAMING AT ME PLS HELP */
-			*(buffer + i) = (char *)(format + i);
+			/* Dereferencing with '*' */
+			*(buffer + i) = *(char *)(format + i);
 			i++;
 		}
 	}
 
-	return (identifiers);
+	return (_strlen(buffer));
 }
