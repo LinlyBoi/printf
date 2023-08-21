@@ -13,14 +13,14 @@ int _printf(const char *format, ...)
 	int buff_idx = 0;
 	int fmt_idx = 0;
 	unsigned int identifiers, BUFF_SIZE;
-	char *buffer, *next;
-	char c;
+	char *buffer, *next, c;
 	va_list args;
 
-	identifiers = _contains(format, '%');
 	va_start(args, format);
-	buffer = malloc(BUFF_SIZE);
+
+	identifiers = _contains(format, '%');
 	BUFF_SIZE = _strlen(format) - identifiers;
+	buffer = malloc(BUFF_SIZE);
 
 	if (!format) /* No string. No laundry */
 		return (0);
