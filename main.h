@@ -4,6 +4,6 @@ int _printf(const char *format, ...);
 int _contains(const char *str, char c);
 int _strlen(const char *str);
 char *_strcpy(char *dest, char *src);
-
+void append(char *str, char c);
 
 #endif

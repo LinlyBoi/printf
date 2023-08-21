@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 					break;
 				case 'c': /* add 1 byte and i++ */
 					c = (char) va_arg(args, int);
-
+					append(buffer, c);
 					BUFF_SIZE += 1;
 					buff_idx += 1;
 					break;

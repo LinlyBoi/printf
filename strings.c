@@ -35,3 +35,19 @@ int _contains(const char *str, char c)
 	else
 		return (0);
 }
+
+/**
+ * append - shoved character at the end
+ *
+ * @str: main string
+ * @c: character getting shoved
+ *
+ * Return: da string but appended
+ */
+
+void append(char *str, char c)
+{
+	int len = _strlen(str);
+	*(str + len) = c;
+	*(str + len + 1) = '\0';
+}
