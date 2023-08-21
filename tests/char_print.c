@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	char c = 97;
+	char c = 'c';
 
 	_printf("cat: %c", c);
 	return (0);

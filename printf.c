@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 
 	identifiers = _contains(format, '%');
-	BUFF_SIZE = _strlen(format) - identifiers;
+	BUFF_SIZE = _strlen(format) - (identifiers * 2);
 	buffer = malloc(BUFF_SIZE);
 
 	if (!format) /* No string. No laundry */
@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 					break;
 				case 'c': /* add 1 byte and i++ */
 					c = (char) va_arg(args, int);
-					*(buffer + buff_idx) = c;
+
 					BUFF_SIZE += 1;
 					buff_idx += 1;
 					break;
