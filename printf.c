@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	int buff_idx = 0;
 	int fmt_idx = 0;
 	unsigned int identifiers = _contains(format, '%');
-	unsigned int BUFF_SIZE = _strlen(format) - (identifiers * 2);
+	unsigned int BUFF_SIZE = _strlen(format) - identifiers;
 	char *buffer, *next;
 	char c;
 	va_list args;
