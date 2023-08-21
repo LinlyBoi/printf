@@ -9,10 +9,11 @@
 
 int main(void)
 {
-	char test_0[] = "Hej";
+	char *test_0 = "Hej";
 /*
  * Brain ded to think bout test cond
  */
-	return (_printf("%s", test_0));
+	_printf("%s \n", test_0);
+	return (_printf("hey, %s", test_0));
 
 }

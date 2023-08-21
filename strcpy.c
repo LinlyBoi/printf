@@ -23,6 +23,8 @@ char *_strcpy(char *dest, char *src)
 		*(new_me + s_idx++) = *(src + i);
 	*(new_me + _strlen(new_me)) = '\0';
 
+	free(dest);
+
 
 	return (new_me);
 }

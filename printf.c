@@ -11,7 +11,7 @@
  **/
 int _printf(const char *format, ...)
 {
-	int buff_idx;
+	int buff_idx, fmt_idx;
 	unsigned int identifiers, BUFF_SIZE;
 	char *buffer, *next;
 	va_list args;
@@ -25,7 +25,8 @@ int _printf(const char *format, ...)
 	if (!format) /* No string. No laundry */
 		return (0);
 	buff_idx = 0;
-	while (format)
+	fmt_idx = 0;
+	while (*(format + fmt_idx))
 	{
 		if ((*format == '%') && (*(format + 1))) /*hello %s*/
 		{
@@ -34,7 +35,9 @@ int _printf(const char *format, ...)
 				case 's':
 					next = va_arg(args, char*); /*Store string temporarily*/
 					buffer = _strcpy(buffer, next);
-					BUFF_SIZE += _strlen(buffer);
+					BUFF_SIZE = _strlen(buffer);
+					buff_idx += _strlen(next);
+					fmt_idx += 2;
 
 					break;
 				case 'c': /* add 1 byte and i++ */
@@ -45,11 +48,12 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			*(buffer + buff_idx) = *(format + buff_idx);
+			*(buffer + buff_idx) = *(format + fmt_idx);
 			buff_idx++;
+			fmt_idx++;
 		}
 	}
 
-	write(1, &buffer, BUFF_SIZE);
+	write(1, buffer, BUFF_SIZE);
 	return (_strlen(buffer));
 }
