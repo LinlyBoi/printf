@@ -10,10 +10,11 @@
 int main(void)
 {
 	char *test_0 = "Hej";
+	char *test_1 = "pls";
 /*
  * Brain ded to think bout test cond
  */
-	_printf("%s \n", test_0);
-	return (_printf("hey, %s", test_0));
+	_printf("%s\n%s\n", test_0, test_1);
+	return (0);
 
 }

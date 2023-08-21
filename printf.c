@@ -2,7 +2,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 /**
  * _printf - printf but worse
  * @format: format string
@@ -11,24 +10,21 @@
  **/
 int _printf(const char *format, ...)
 {
-	int buff_idx, fmt_idx;
-	unsigned int identifiers, BUFF_SIZE;
+	int buff_idx = 0;
+	int fmt_idx = 0;
+	unsigned int identifiers = _contains(format, '%');
+	unsigned int BUFF_SIZE = _strlen(format) - (identifiers * 2);
 	char *buffer, *next;
 	va_list args;
 
-
 	va_start(args, format);
-	identifiers = _contains(format, '%');
-	BUFF_SIZE  = _strlen(format) - (identifiers * 2);
 	buffer = malloc(BUFF_SIZE);
 
 	if (!format) /* No string. No laundry */
 		return (0);
-	buff_idx = 0;
-	fmt_idx = 0;
 	while (*(format + fmt_idx))
 	{
-		if ((*format == '%') && (*(format + 1))) /*hello %s*/
+		if ((*(format + fmt_idx) == '%') && (*(format + fmt_idx + 1)))
 		{
 			switch (*(format + 1)) /*this needs to shrink*/
 			{
@@ -38,7 +34,6 @@ int _printf(const char *format, ...)
 					BUFF_SIZE = _strlen(buffer);
 					buff_idx += _strlen(next);
 					fmt_idx += 2;
-
 					break;
 				case 'c': /* add 1 byte and i++ */
 					break;
@@ -53,7 +48,6 @@ int _printf(const char *format, ...)
 			fmt_idx++;
 		}
 	}
-
-	write(1, buffer, BUFF_SIZE);
+	write(1, buffer, BUFF_SIZE + 1);
 	return (_strlen(buffer));
 }
