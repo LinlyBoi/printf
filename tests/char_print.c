@@ -10,6 +10,6 @@ int main(void)
 {
 	char c = 'c';
 
-	_printf("cat: %c", c);
+	_printf("%c\n", c);
 	return (0);
 }

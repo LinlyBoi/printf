@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * _strlen - Takes string and return its length
@@ -45,9 +46,19 @@ int _contains(const char *str, char c)
  * Return: da string but appended
  */
 
-void append(char *str, char c)
+char* append(char *str, char c)
 {
-	int len = _strlen(str);
-	*(str + len) = c;
-	*(str + len + 1) = '\0';
+	int len, i;
+	char *new_me;
+
+	len = _strlen(str);
+
+	new_me = malloc(len + 1);
+	i = -1;
+	while(*(str + ++i))
+		*(new_me + i) = *(str + i);
+
+	*(new_me + i++) = c;
+	*(new_me + len + 1) = '\0';
+	return (new_me);
 }
