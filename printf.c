@@ -54,6 +54,6 @@ int _printf(const char *format, ...)
 			fmt_idx++;
 		}
 	}
-	write(1, buffer, BUFF_SIZE);
+	write(1, buffer, BUFF_SIZE + 1);
 	return (_strlen(buffer));
 }
