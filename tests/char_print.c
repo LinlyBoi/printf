@@ -10,6 +10,7 @@ int main(void)
 {
 	char c = 'c';
 
-	_printf("%c\n", c);
+	_printf("%c%c", c, c);
+	_printf("cat: %c\n", c);
 	return (0);
 }
