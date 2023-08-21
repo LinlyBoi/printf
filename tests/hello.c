@@ -8,5 +8,6 @@ int main(void)
 {
 	int len;
 
-	len = _printf("Hello world");
+	len = _printf("Hello world\n");
+	return (len);
 }
