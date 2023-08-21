@@ -1,5 +1,5 @@
-#include<../main.h>
-#include<string.h>
+#include "../main.h"
+#include <string.h>
 
 /**
  * main - Tests if '%s' works within our printf.
@@ -10,10 +10,9 @@
 int main(void)
 {
 	char test_0[] = "Hej";
-	char test_1[] = "H,e,j";
 /*
  * Brain ded to think bout test cond
  */
+	return (_printf("%s", test_0));
 
-	return (0);
 }
