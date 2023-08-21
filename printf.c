@@ -15,6 +15,7 @@ int _printf(const char *format, ...)
 	unsigned int identifiers = _contains(format, '%');
 	unsigned int BUFF_SIZE = _strlen(format) - (identifiers * 2);
 	char *buffer, *next;
+	char c;
 	va_list args;
 
 	va_start(args, format);
@@ -36,6 +37,11 @@ int _printf(const char *format, ...)
 					fmt_idx += 2;
 					break;
 				case 'c': /* add 1 byte and i++ */
+					c = va_arg(args, int);
+					*(buffer + buff_idx + 1) = c;
+					BUFF_SIZE = _strlen(buffer);
+					buff_idx += 1;
+					fmt_idx += 2;
 					break;
 				case '%': /*add 1 byte*/
 					break;
