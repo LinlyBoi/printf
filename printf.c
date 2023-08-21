@@ -34,18 +34,17 @@ int _printf(const char *format, ...)
 					buffer = _strcpy(buffer, next);
 					BUFF_SIZE = _strlen(buffer);
 					buff_idx += _strlen(next);
-					fmt_idx += 2;
 					break;
 				case 'c': /* add 1 byte and i++ */
-					c = va_arg(args, int);
-					*(buffer + buff_idx + 1) = (char) c;
-					BUFF_SIZE = _strlen(buffer);
+					c = (char) va_arg(args, int);
+					*(buffer + buff_idx) = c;
+					BUFF_SIZE += 1;
 					buff_idx += 1;
-					fmt_idx += 2;
 					break;
 				case '%': /*add 1 byte*/
 					break;
 			}
+			fmt_idx += 2;
 		}
 		else
 		{

@@ -11,5 +11,5 @@ int main(void)
 	char c = 97;
 
 	_printf("cat: %c", c);
-	return (1);
+	return (0);
 }
