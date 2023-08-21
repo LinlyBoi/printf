@@ -14,7 +14,7 @@ int main(void)
 /*
  * Brain ded to think bout test cond
  */
-	_printf("%s\n%s\n", test_0, test_1);
+	_printf(" suh %s\n%s\n", test_0, test_1);
 	return (0);
 
 }
