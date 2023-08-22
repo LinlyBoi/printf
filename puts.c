@@ -6,10 +6,21 @@
  *
  * @str: pointers to "buffer" or string head
  *
- * Return: Naught
+ * Return: written bytes
  */
 
-void _puts(char *str)
+int _puts(char *str)
 {
-	write(1, str, _strlen(str));
+	return (write(1, str, _strlen(str)));
+}
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }

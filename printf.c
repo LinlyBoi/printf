@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	int buff_idx, fmt_idx;
-	unsigned int identifiers, BUFF_SIZE;
+	unsigned int identifiers, BUFF_SIZE, printed;
 	char *buffer, *next, c;
 	va_list args;
 
@@ -26,6 +26,7 @@ int _printf(const char *format, ...)
 
 	buff_idx = 0;
 	fmt_idx = 0;
+	printed = 0;
 	while (*(format + fmt_idx))
 	{
 		if ((*(format + fmt_idx) == '%') && (*(format + fmt_idx + 1)))
@@ -68,5 +69,6 @@ int _printf(const char *format, ...)
 		_puts(buffer);
 		free(buffer);
 	}
-	return (_strlen(buffer));
+	_putchar('\0');
+	return (printed);
 }
