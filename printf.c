@@ -42,9 +42,9 @@ int _printf(const char *format, ...)
 			{
 				case 's':
 					next = va_arg(args, char*); /*Store string temporarily*/
-					write(1, next, _strlen(next));
+					_puts(next);
 					break;
-				case 'c': /* add 1 byte and i++ */
+				case 'c':
 					c =  va_arg(args, int);
 					write(1, &c, 1);
 					break;
@@ -52,13 +52,9 @@ int _printf(const char *format, ...)
 					break;
 			}
 			if (*(format + fmt_idx + 2))
-			{
 				fmt_idx += 2;
-			}
 			else
-			{
 				fmt_idx += 1;
-			}
 		}
 		else
 		{
