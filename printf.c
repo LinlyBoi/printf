@@ -76,6 +76,10 @@ int fmt(char c, va_list args)
 			return (_puts(_uitoa(va_arg(args, unsigned int), 8)));
 		case 'x':
 			return (_puts(_uitoa(va_arg(args, unsigned int), 16)));
+		case 'X':
+			return (_puts(str_up(_uitoa(va_arg(args, unsigned int), 16))));
+		case 'p':
+			return (_puts(_uitoa(va_arg(args, unsigned int), 16)));
 		default:
 			_putchar('%'); /* TODO make this cleaner */
 			_putchar(c);
