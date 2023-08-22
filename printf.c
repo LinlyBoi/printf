@@ -43,7 +43,7 @@ int _printf(const char *format, ...)
 	}
 	if (buffer)
 	{
-		_puts(buffer);
+		printed += _puts(buffer);
 		free(buffer);
 	}
 		return (printed);
@@ -64,6 +64,12 @@ int fmt(char c, va_list args)
 			return (_putchar(va_arg(args, int)));
 		case '%': /*add 1 byte*/
 			return (_putchar('%'));
+		case 'd':
+			return (_puts(_itoa(va_arg(args, int), 10)));
+		case 'i':
+			return (_puts(_itoa(va_arg(args, int), 10)));
+		case 'b':
+			return (_puts(_itoa(va_arg(args, int), 2)));
 		default:
 			_putchar('%'); /* TODO make this cleaner */
 			_putchar(c);

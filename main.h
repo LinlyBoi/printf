@@ -10,5 +10,8 @@ int _puts(char *str);
 int _putchar(char c);
 char *_memset(char *adr, int bval);
 int fmt(char c, va_list args);
+char *_str_reverse(char *str);
+char *_itoa(int n, int base);
+char *_uitoa(unsigned int n, int base);
 
 #endif
