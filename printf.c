@@ -10,8 +10,7 @@
  **/
 int _printf(const char *format, ...)
 {
-	int buff_idx;
-	int fmt_idx;
+	int buff_idx, fmt_idx;
 	unsigned int identifiers, BUFF_SIZE;
 	char *buffer, *next, c;
 	va_list args;
@@ -24,6 +23,7 @@ int _printf(const char *format, ...)
 
 	if (!format) /* No string. No laundry */
 		return (0);
+
 	buff_idx = 0;
 	fmt_idx = 0;
 	while (*(format + fmt_idx))
