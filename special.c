@@ -48,7 +48,7 @@ int printf_rot13(va_list args)
 }
 
 /**
- * printf_pointer - prints an hexgecimal number.
+ * printf_pointer - prints an hexdecimal number.
  * @val: arguments.
  * Return: counter.
  */
