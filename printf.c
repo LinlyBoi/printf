@@ -9,22 +9,16 @@
  **/
 int _printf(const char *format, ...)
 {
-	int buff_idx, fmt_idx; /* Indexes */
-	unsigned int identifiers, BUFF_SIZE, printed;
+	unsigned int buff_idx, fmt_idx, printed;
 	char *buffer; /*where non formated things are stored*/
 	va_list args;
 
-	va_start(args, format);
-
-	identifiers = _contains(format, '%'); /* instances of %s, %c etc */
-	BUFF_SIZE = _strlen(format) - identifiers;
-	buffer = (char *) malloc(BUFF_SIZE); /* sized of the non % instances only*/
-
 	if (!format && !buffer) /* No string. No laundry */
 		return (0);
+	va_start(args, format);
 
-	buff_idx = fmt_idx = 0; /*chain assignment*/
-	printed = 0; /*this alone due to diff type*/
+	buffer = (char *) malloc(_strlen(format) - _contains(format,'%')); /* sized of the non % instances only*/
+	buff_idx = fmt_idx = printed = 0; /*chain assignment*/
 	while (*(format + fmt_idx))
 	{
 		if ((*(format + fmt_idx) == '%') && (*(format + fmt_idx + 1)))
