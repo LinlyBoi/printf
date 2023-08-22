@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 
 	identifiers = _contains(format, '%');
-	BUFF_SIZE = _strlen(format) - (identifiers * 2);
+	BUFF_SIZE = _strlen(format) - identifiers;
 	buffer = malloc(BUFF_SIZE);
 
 	if (!format) /* No string. No laundry */
@@ -28,24 +28,34 @@ int _printf(const char *format, ...)
 	{
 		if ((*(format + fmt_idx) == '%') && (*(format + fmt_idx + 1)))
 		{
-			switch (*(format + 1)) /*this needs to shrink*/
+			if (*buffer)
+			{
+				_puts(buffer);
+				free(buffer);
+				buffer =  malloc(BUFF_SIZE);
+				buff_idx = 0;
+			}
+			switch (*(format + fmt_idx + 1)) /*this needs to shrink*/
 			{
 				case 's':
 					next = va_arg(args, char*); /*Store string temporarily*/
-					buffer = _strcpy(buffer, next);
-					BUFF_SIZE = _strlen(buffer);
-					buff_idx += _strlen(next);
+					write(1, next, _strlen(next));
 					break;
 				case 'c': /* add 1 byte and i++ */
-					c = (char) va_arg(args, int);
-					buffer = append(buffer, c);
-					BUFF_SIZE += 1;
-					buff_idx += 1;
+					c =  va_arg(args, int);
+					write(1, &c, 1);
 					break;
 				case '%': /*add 1 byte*/
 					break;
 			}
-			fmt_idx += 2;
+			if (*(format + fmt_idx + 2))
+			{
+				fmt_idx += 2;
+			}
+			else
+			{
+				fmt_idx += 1;
+			}
 		}
 		else
 		{
@@ -54,6 +64,10 @@ int _printf(const char *format, ...)
 			fmt_idx++;
 		}
 	}
-	write(1, buffer, BUFF_SIZE + 1);
+	if (*buffer)
+	{
+		_puts(buffer);
+		free(buffer);
+	}
 	return (_strlen(buffer));
 }

@@ -8,9 +8,9 @@
 
 int main(void)
 {
-	char c = 'c';
+	char c = 97;
 
-	_printf("%c%c", c, c);
+	_printf("%c%c\n", c, c);
 	_printf("cat: %c\n", c);
 	return (0);
 }
