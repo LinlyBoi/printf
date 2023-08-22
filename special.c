@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * printf_37 - prints the char 37.
+ * printf_37 - prints %
  * Return: 1.
  */
 int printf_37(void)
