@@ -1,84 +1,120 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
- * _strlen - Takes string and return its length
- *
- * @str: Address to the head of the string (Array of Characters) (Lost btw)
- *
- * Return: Length of String
+ * printf_char - prints a char.
+ * @val: arguments.
+ * Return: 1.
  */
-int _strlen(const char *str)
+int printf_char(va_list val)
 {
-	if (*str)
-		return (1 + _strlen(++str));
-	else
-		return (0);
+	char s;
+
+	s = va_arg(val, int);
+	_putchar(s);
+	return (1);
 }
 
 /**
- * _contains - gets number of unique identifiers
- *
- * @str: da string
- * @c: basically almost always '%'
- *
- * Return: number of unique cases of "%*" that aren't "%%"
+ * printf_bin - prints a binary number.
+ * @val: arguments.
+ * Return: 1.
  */
-int _contains(const char *str, char c)
+int printf_bin(va_list val)
 {
-	if (*str)
+	int flag = 0;
+	int cont = 0;
+	int i, a = 1, b;
+	unsigned int num = va_arg(val, unsigned int);
+	unsigned int p;
+
+	for (i = 0; i < 32; i++)
 	{
-		if (*str == c && *(str + 1) != c && *(str - 1) != c)
-			return (1 + _contains(str + 1, c));
-		else
-			return (_contains(str + 1, c));
+		p = ((a << (31 - i)) & num);
+		if (p >> (31 - i))
+			flag = 1;
+		if (flag)
+		{
+			b = p >> (31 - i);
+			_putchar(b + 48);
+			cont++;
+		}
 	}
-	else
-		return (0);
+	if (cont == 0)
+	{
+		cont++;
+		_putchar('0');
+	}
+	return (cont);
 }
-
 /**
- * append - shoved character at the end
- *
- * @str: main string
- * @c: character getting shoved
- *
- * Return: da string but appended
+ * printf_HEX - prints an hexgecimal number.
+ * @val: arguments.
+ * Return: counter.
  */
-
-char *append(char *str, char c)
-{
-	int len, i;
-	char *new_me;
-
-	len = _strlen(str);
-
-	new_me = malloc(len + 1);
-	i = -1;
-	while (*(str + ++i))
-		*(new_me + i) = *(str + i);
-
-	*(new_me + i++) = c;
-	*(new_me + len + 1) = '\0';
-	return (new_me);
-}
-
-/**
- * str_up - changes all lowercase letters of a string
- * to uppercase
- * @s: string to modify
- *
- * Return: the resulting string
- */
-char *str_up(char *s)
+int printf_HEX(va_list val)
 {
 	int i;
+	int *arr;
+	int counter = 0;
+	unsigned int num = va_arg(val, unsigned int);
+	unsigned int temp = num;
 
-	for (i = 0; s[i] != '\0'; i++)
+	while (num / 16 != 0)
 	{
-		if (s[i] >= 'a' && s[i] <= 'z')
-			s[i] = s[i] - 32;
+		num /= 16;
+		counter++;
 	}
+	counter++;
+	arr = malloc(counter * sizeof(int));
 
-	return (s);
+	for (i = 0; i < counter; i++)
+	{
+		arr[i] = temp % 16;
+		temp /= 16;
+	}
+	for (i = counter - 1; i >= 0; i--)
+	{
+		if (arr[i] > 9)
+			arr[i] = arr[i] + 7;
+		_putchar(arr[i] + '0');
+	}
+	free(arr);
+	return (counter);
+}
+
+#include "main.h"
+
+/**
+ * printf_HEX_aux - prints an hexdecimal number.
+ * @num: number to print.
+ * Return: counter.
+ */
+int printf_HEX_aux(unsigned int num)
+{
+	int i;
+	int *arr;
+	int counter = 0;
+	unsigned int temp = num;
+
+	while (num / 16 != 0)
+	{
+		num /= 16;
+		counter++;
+	}
+	counter++;
+	arr = malloc(counter * sizeof(int));
+
+	for (i = 0; i < counter; i++)
+	{
+		arr[i] = temp % 16;
+		temp /= 16;
+	}
+	for (i = counter - 1; i >= 0; i--)
+	{
+		if (arr[i] > 9)
+			arr[i] = arr[i] + 7;
+		_putchar(arr[i] + '0');
+	}
+	free(arr);
+	return (counter);
 }
