@@ -64,7 +64,7 @@ char *append(char *str, char c)
 }
 
 /**
- * string_toupper - changes all lowercase letters of a string
+ * str_up - changes all lowercase letters of a string
  * to uppercase
  * @s: string to modify
  *
