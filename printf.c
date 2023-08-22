@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 {
 	int buff_idx, fmt_idx;
 	unsigned int identifiers, BUFF_SIZE, printed;
-	char *buffer, *next, c;
+	char *buffer;
 	va_list args;
 
 	va_start(args, format);
@@ -42,12 +42,10 @@ int _printf(const char *format, ...)
 			switch (*(format + fmt_idx + 1)) /*this needs to shrink*/
 			{
 				case 's':
-					next = va_arg(args, char*); /*Store string temporarily*/
-					_puts(next);
+					_puts(va_arg(args, char*));
 					break;
 				case 'c':
-					c =  va_arg(args, int);
-					write(1, &c, 1);
+					_putchar(va_arg(args, int));
 					break;
 				case '%': /*add 1 byte*/
 					break;
