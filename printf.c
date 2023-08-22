@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			{
 				printed += _puts(buffer);
 				buff_size -= _strlen(buffer);
-				_memset(buffer, 0);
+				buffer = _memset(buffer, 0);
 				buffer = (char *) malloc(buff_size);
 				if (!buffer)
 					return (-1);
@@ -43,7 +43,8 @@ int _printf(const char *format, ...)
 	}
 	if (buffer)
 	{
-		_puts(buffer);
+		printed += _puts(buffer);
+		buffer = _memset(buffer, 0);
 		free(buffer);
 	}
 		return (printed);
@@ -64,8 +65,26 @@ int fmt(char c, va_list args)
 			return (_putchar(va_arg(args, int)));
 		case '%': /*add 1 byte*/
 			return (_putchar('%'));
+		case 'd':
+			return (_puts(_itoa(va_arg(args, int), 10)));
+		case 'i':
+			return (_puts(_uitoa(va_arg(args, unsigned int), 10)));
+		case 'u':
+			return (_puts(_uitoa(va_arg(args, unsigned int), 10)));
+		case 'b':
+			return (_puts(_uitoa(va_arg(args, unsigned int), 2)));
+		case 'o':
+			return (_puts(_uitoa(va_arg(args, unsigned int), 8)));
+		case 'x':
+			return (_puts(_uitoa(va_arg(args, unsigned int), 16)));
+		case 'X':
+			return (_puts(str_up(_uitoa(va_arg(args, unsigned int), 16))));
+		case 'p':
+			return (_puts(_uitoa(va_arg(args, unsigned int), 16)));
 		default:
-			return (0);
+			_putchar('%'); /* TODO make this cleaner */
+			_putchar(c);
+			return (2);
 	}
 
 }
