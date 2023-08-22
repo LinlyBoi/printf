@@ -48,7 +48,7 @@ int printf_bin(va_list val)
 	return (cont);
 }
 /**
- * printf_HEX - prints an hexgecimal number.
+ * printf_HEX - prints an hexdecimal number.
  * @val: arguments.
  * Return: counter.
  */
