@@ -8,7 +8,7 @@
 #include <limits.h>
 
 /**
- * struct format - match the conversion specifiers
+ * struct format - conversion specifiers
  * @id:identifier
  * @f: type pointer
  */
