@@ -20,6 +20,8 @@ int _printf(const char *format, ...)
 	identifiers = _contains(format, '%'); /* instances of %s, %c etc */
 	BUFF_SIZE = _strlen(format) - identifiers;
 	buffer = malloc(BUFF_SIZE); /* sized of the non % instances only*/
+	if (!buffer)
+		return (-1);
 
 	if (!format) /* No string. No laundry */
 		return (0);
@@ -31,11 +33,9 @@ int _printf(const char *format, ...)
 	{
 		if ((*(format + fmt_idx) == '%') && (*(format + fmt_idx + 1)))
 		{
-			if (*buffer) /* printing and clearing buffer on formatted things */
+			if (buffer) /* printing and clearing buffer on formatted things */
 			{
-				_puts(buffer);
-				BUFF_SIZE -= _strlen(buffer);
-				printed += _strlen(buffer);
+				printed += _puts(buffer);
 				free(buffer);
 				buffer =  malloc(BUFF_SIZE);
 				if (!buffer)
