@@ -38,6 +38,8 @@ int _printf(const char *format, ...)
 				printed += _strlen(buffer);
 				free(buffer);
 				buffer =  malloc(BUFF_SIZE);
+				if (!buffer)
+					return (-1);
 				buff_idx = 0;
 			}
 			switch (*(format + fmt_idx + 1)) /*this needs to shrink*/
@@ -61,7 +63,7 @@ int _printf(const char *format, ...)
 			fmt_idx++;
 		}
 	}
-	if (*buffer) /*final buffer check*/
+	if (buffer) /*final buffer check*/
 	{
 		printed += _puts(buffer);
 		free(buffer);
