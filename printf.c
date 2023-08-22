@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 				buff_idx = 0;
 			}
 			printed += fmt(*(format + fmt_idx + 1), args);
-				fmt_idx += 2;
+			fmt_idx += 2;
 		}
 		else
 			*(buffer + buff_idx++) = *(format + fmt_idx++); /* filling up buffer */
