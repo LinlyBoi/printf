@@ -14,7 +14,7 @@ int _strlen(char *s)
 }
 /**
  * _strlenc - Strlen function char pointer s
- * @s: Type char pointer
+ * @s: char pointer
  * Return: c
  */
 int _strlenc(const char *s)
