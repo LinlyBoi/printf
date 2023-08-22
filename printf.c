@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
 /**
@@ -41,18 +40,7 @@ int _printf(const char *format, ...)
 					return (-1);
 				buff_idx = 0;
 			}
-			switch (*(format + fmt_idx + 1)) /*this needs to shrink*/
-			{
-				case 's':
-					printed += _puts(va_arg(args, char*));
-					break;
-				case 'c':
-					printed += _putchar(va_arg(args, int));
-					break;
-				case '%': /*add 1 byte*/
-					printed += _putchar('%');
-					break;
-			}
+			printed += fmt(*(format + fmt_idx + 1));
 				fmt_idx += 2;
 		}
 		else
@@ -68,4 +56,20 @@ int _printf(const char *format, ...)
 		free(buffer);
 	}
 		return (printed);
+}
+int fmt(char c, va_list args)
+{
+	switch (c) /*this needs to shrink*/
+	{
+		case 's':
+			return(_puts(va_arg(args, char*)));
+			break;
+		case 'c':
+			return (_putchar(va_arg(args, int)));
+			break;
+		case '%': /*add 1 byte*/
+			return (_putchar('%'));
+			break;
+	}
+
 }
