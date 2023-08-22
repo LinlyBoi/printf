@@ -9,15 +9,17 @@
  **/
 int _printf(const char *format, ...)
 {
-	unsigned int buff_idx, fmt_idx, printed;
+	unsigned int buff_idx, fmt_idx, buff_size, printed;
 	char *buffer; /*where non formated things are stored*/
 	va_list args;
 
+	va_start(args, format);
+	buff_size = _strlen(format) - _contains(format , '%');
+	buffer = (char *) malloc(_strlen(format) - _contains(format,'%')); /* sized of the non % instances only*/
+
 	if (!format && !buffer) /* No string. No laundry */
 		return (0);
-	va_start(args, format);
 
-	buffer = (char *) malloc(_strlen(format) - _contains(format,'%')); /* sized of the non % instances only*/
 	buff_idx = fmt_idx = printed = 0; /*chain assignment*/
 	while (*(format + fmt_idx))
 	{
@@ -26,7 +28,11 @@ int _printf(const char *format, ...)
 			if (buffer) /* printing and clearing buffer on formatted things */
 			{
 				printed += _puts(buffer);
+				buff_size -= _strlen(buffer);
 				_memset(buffer, 0);
+				buffer = (char *) malloc(buff_size);
+				if (!buffer)
+					return (-1);
 				buff_idx = 0;
 			}
 			printed += fmt(*(format + fmt_idx + 1), args);
