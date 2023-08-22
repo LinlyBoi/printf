@@ -18,7 +18,7 @@ int printf_exclusive_string(va_list val)
 	{
 		if (s[i] < 32 || s[i] >= 127)
 		{
-			/* speical*/
+			/* speical */
 			_putchar('\\');
 			_putchar('x');
 			len = len + 2;
@@ -28,6 +28,7 @@ int printf_exclusive_string(va_list val)
 				_putchar('0');
 				len++;
 			}
+			/*epic hex*/
 			len = len + printf_HEX_aux(cast);
 		}
 		else
