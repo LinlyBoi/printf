@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 	{
 		if ((*(format + fmt_idx) == '%') && (*(format + fmt_idx + 1)))
 		{
-			if (*buffer)
+			if (*buffer) /* printing and clearing buffer on formatted things */
 			{
 				_puts(buffer);
 				BUFF_SIZE -= _strlen(buffer);
@@ -56,12 +56,12 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			*(buffer + buff_idx) = *(format + fmt_idx);
+			*(buffer + buff_idx) = *(format + fmt_idx); /* filling up buffer */
 			buff_idx++;
 			fmt_idx++;
 		}
 	}
-	if (*buffer)
+	if (*buffer) /*final buffer check*/
 	{
 		printed += _puts(buffer);
 		free(buffer);
