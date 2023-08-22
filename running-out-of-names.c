@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * printf_dec - prints decimal
- * @args: argument to print
+ * printf_dec -  decimal
+ * @args: argument rint
  * Return: number of characters printed
  */
 
