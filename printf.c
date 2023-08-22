@@ -24,6 +24,8 @@ int _printf(const char *format, ...)
 
 	if (!format) /* No string. No laundry */
 		return (0);
+	buff_idx = 0;
+	fmt_idx = 0;
 	while (*(format + fmt_idx))
 	{
 		if ((*(format + fmt_idx) == '%') && (*(format + fmt_idx + 1)))
