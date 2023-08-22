@@ -13,7 +13,7 @@ int _strlen(char *s)
 
 }
 /**
- * _strlenc - Strlen function char pointer s
+ * _strlenc - char pointer s
  * @s: char pointer
  * Return: c
  */
