@@ -21,6 +21,7 @@ int _printf(const char *format, ...)
 		return (0);
 
 	buff_idx = fmt_idx = printed = 0; /*chain assignment*/
+	_memset(buffer, 0);
 	while (*(format + fmt_idx))
 	{
 		if ((*(format + fmt_idx) == '%') && (*(format + fmt_idx + 1)))
