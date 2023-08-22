@@ -83,8 +83,6 @@ int printf_HEX(va_list val)
 	return (counter);
 }
 
-#include "main.h"
-
 /**
  * printf_HEX_aux - prints an hexdecimal number.
  * @num: number to print.
