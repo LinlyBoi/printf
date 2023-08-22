@@ -56,7 +56,7 @@ int printf_string(va_list val)
 }
 
 /**
- * printf_unsigned - nteger
+ * printf_unsigned - integer
  * @args: argument to print
  * Return: number of characters printed
  */
