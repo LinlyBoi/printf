@@ -65,7 +65,9 @@ int fmt(char c, va_list args)
 		case '%': /*add 1 byte*/
 			return (_putchar('%'));
 		default:
-			return (0);
+			_putchar('%'); /* TODO make this cleaner */
+			_putchar(c);
+			return (2);
 	}
 
 }
