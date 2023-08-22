@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+/* important libs */
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
