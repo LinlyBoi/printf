@@ -33,6 +33,7 @@ int _printf(const char *format, ...)
 			if (*buffer)
 			{
 				_puts(buffer);
+				BUFF_SIZE -= _strlen(buffer);
 				free(buffer);
 				buffer =  malloc(BUFF_SIZE);
 				buff_idx = 0;
