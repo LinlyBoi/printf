@@ -5,3 +5,4 @@ Group project to implement printf from scratch
 `test/` where all the tests lay
 
 ## Building **TODO**
+linly pls stop too many commits
