@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 
 	identifiers = _contains(format, '%'); /* instances of %s, %c etc */
 	BUFF_SIZE = _strlen(format) - identifiers;
-	buffer = malloc(BUFF_SIZE); /* sized of the non % instances only*/
+	buffer = (char *) malloc(BUFF_SIZE); /* sized of the non % instances only*/
 	if (!buffer)
 		return (-1);
 
@@ -35,8 +35,8 @@ int _printf(const char *format, ...)
 			if (buffer) /* printing and clearing buffer on formatted things */
 			{
 				printed += _puts(buffer);
-				free(buffer);
-				buffer =  malloc(BUFF_SIZE);
+				_memset(buffer, 0);
+				buffer = (char *) malloc(BUFF_SIZE);
 				if (!buffer)
 					return (-1);
 				buff_idx = 0;
