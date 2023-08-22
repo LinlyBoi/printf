@@ -10,8 +10,8 @@
  **/
 int _printf(const char *format, ...)
 {
-	int buff_idx = 0;
-	int fmt_idx = 0;
+	int buff_idx;
+	int fmt_idx;
 	unsigned int identifiers, BUFF_SIZE;
 	char *buffer, *next, c;
 	va_list args;
