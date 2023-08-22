@@ -67,7 +67,7 @@ int fmt(char c, va_list args)
 		case 'd':
 			return (_puts(_itoa(va_arg(args, int), 10)));
 		case 'i':
-			return (_puts(_itoa(va_arg(args, unsigned int), 10)));
+			return (_puts(_uitoa(va_arg(args, unsigned int), 10)));
 		case 'u':
 			return (_puts(_uitoa(va_arg(args, unsigned int), 10)));
 		case 'b':
