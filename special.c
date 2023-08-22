@@ -19,7 +19,9 @@ int printf_rot13(va_list args)
 	int i, j, counter = 0;
 	int k = 0;
 	char *s = va_arg(args, char*);
+	/* basic alphabet */
 	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	/* shifted by 13*/
 	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
 
 	if (s == NULL)
