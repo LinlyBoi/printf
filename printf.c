@@ -70,6 +70,8 @@ int fmt(char c, va_list args)
 		case '%': /*add 1 byte*/
 			return (_putchar('%'));
 			break;
+		default:
+			return (0);
 	}
 
 }
