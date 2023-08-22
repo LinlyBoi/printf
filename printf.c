@@ -14,8 +14,8 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-	buff_size = _strlen(format) - _contains(format , '%');
-	buffer = (char *) malloc(_strlen(format) - _contains(format,'%')); /* sized of the non % instances only*/
+	buff_size = _strlen(format) - _contains(format, '%');
+	buffer = (char *) malloc(buff_size); /* sized of the non % instances only*/
 
 	if (!format && !buffer) /* No string. No laundry */
 		return (0);
