@@ -2,7 +2,7 @@
 
 /**
  * printf_char - prints a char.
- * @val: arguts.
+ * @val: args.
  * Return: 1.
  */
 int printf_char(va_list val)
