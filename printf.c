@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 					return (-1);
 				buff_idx = 0;
 			}
-			printed += fmt(*(format + fmt_idx + 1));
+			printed += fmt(*(format + fmt_idx + 1), args);
 				fmt_idx += 2;
 		}
 		else
