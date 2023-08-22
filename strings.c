@@ -15,7 +15,7 @@ int printf_char(va_list val)
 }
 
 /**
- * printf_bin - prints binary number.
+ * printf_bin - binary number.
  * @val: arguments.
  * Return: 1.
  */
