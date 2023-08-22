@@ -50,10 +50,7 @@ int _printf(const char *format, ...)
 				case '%': /*add 1 byte*/
 					break;
 			}
-			/*if (*(format + fmt_idx + 2))*/
 				fmt_idx += 2;
-			/*else*/
-				/*fmt_idx += 1;*/
 		}
 		else
 		{
