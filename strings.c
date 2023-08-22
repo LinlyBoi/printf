@@ -46,7 +46,7 @@ int _contains(const char *str, char c)
  * Return: da string but appended
  */
 
-char* append(char *str, char c)
+char *append(char *str, char c)
 {
 	int len, i;
 	char *new_me;
@@ -55,7 +55,7 @@ char* append(char *str, char c)
 
 	new_me = malloc(len + 1);
 	i = -1;
-	while(*(str + ++i))
+	while (*(str + ++i))
 		*(new_me + i) = *(str + i);
 
 	*(new_me + i++) = c;
