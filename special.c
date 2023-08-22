@@ -10,7 +10,7 @@ int printf_37(void)
 }
 
 /**
- * printf_rot13 -  str to ROT13 place into buffer
+ * printf_rot13 -  OT13 place into buffer
  * @args:  va_arg where is allocated printf arguments
  * Return: counter
  */
