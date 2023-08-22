@@ -13,5 +13,6 @@ int fmt(char c, va_list args);
 char *_str_reverse(char *str);
 char *_itoa(int n, int base);
 char *_uitoa(unsigned int n, int base);
+char *string_toupper(char *s);
 
 #endif
