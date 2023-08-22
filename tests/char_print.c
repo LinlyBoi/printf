@@ -10,6 +10,6 @@ int main(void)
 {
 	char c = 97;
 
-	_printf("cat: %css\n", c);
+	_printf("cat: %css\noh wait is that...a %%\n", c);
 	return (0);
 }
