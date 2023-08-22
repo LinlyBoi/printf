@@ -2,8 +2,8 @@
 
 /**
  * printf_char - char.
- * @val: args.
- * Return: 1.
+ * @val: args
+ * Return: 1
  */
 int printf_char(va_list val)
 {
