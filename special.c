@@ -11,8 +11,7 @@ int printf_37(void)
 
 /**
  * printf_rot13 -  ROT13 place into buffer
- * @args:  va_arg where is allocated printf arguments
- * Return: counter
+ * @args:   * Return: counter
  */
 int printf_rot13(va_list args)
 {
