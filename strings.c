@@ -62,3 +62,23 @@ char *append(char *str, char c)
 	*(new_me + len + 1) = '\0';
 	return (new_me);
 }
+
+/**
+ * string_toupper - changes all lowercase letters of a string
+ * to uppercase
+ * @s: string to modify
+ *
+ * Return: the resulting string
+ */
+char *str_up(char *s)
+{
+	int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if (s[i] >= 'a' && s[i] <= 'z')
+			s[i] = s[i] - 32;
+	}
+
+	return (s);
+}
