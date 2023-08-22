@@ -12,7 +12,7 @@ int printf_37(void)
 /**
  * printf_rot13 -  ROT13 CAESAR's AMAZING CIPHEER
  * @args: STRING
- * Return: counter
+ * Return:coun
  */
 int printf_rot13(va_list args)
 {
