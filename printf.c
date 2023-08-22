@@ -21,7 +21,6 @@ int _printf(const char *format, ...)
 		return (0);
 
 	buff_idx = fmt_idx = printed = 0; /*chain assignment*/
-	_memset(buffer, 0);
 	while (*(format + fmt_idx))
 	{
 		if ((*(format + fmt_idx) == '%') && (*(format + fmt_idx + 1)))
@@ -30,7 +29,7 @@ int _printf(const char *format, ...)
 			{
 				printed += _puts(buffer);
 				buff_size -= _strlen(buffer);
-				_memset(buffer, 0);
+				buffer = _memset(buffer, 0);
 				buffer = (char *) malloc(buff_size);
 				if (!buffer)
 					return (-1);
@@ -45,6 +44,7 @@ int _printf(const char *format, ...)
 	if (buffer)
 	{
 		printed += _puts(buffer);
+		buffer = _memset(buffer, 0);
 		free(buffer);
 	}
 		return (printed);
