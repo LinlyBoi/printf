@@ -19,10 +19,8 @@ int _printf(const char *format, ...)
 	identifiers = _contains(format, '%'); /* instances of %s, %c etc */
 	BUFF_SIZE = _strlen(format) - identifiers;
 	buffer = (char *) malloc(BUFF_SIZE); /* sized of the non % instances only*/
-	if (!buffer)
-		return (-1);
 
-	if (!format) /* No string. No laundry */
+	if (!format && !buffer) /* No string. No laundry */
 		return (0);
 
 	buff_idx = fmt_idx = 0; /*chain assignment*/
@@ -44,11 +42,7 @@ int _printf(const char *format, ...)
 				fmt_idx += 2;
 		}
 		else
-		{
-			*(buffer + buff_idx) = *(format + fmt_idx); /* filling up buffer */
-			buff_idx++;
-			fmt_idx++;
-		}
+			*(buffer + buff_idx++) = *(format + fmt_idx++); /* filling up buffer */
 	}
 	if (buffer)
 	{
@@ -62,7 +56,7 @@ int fmt(char c, va_list args)
 	switch (c) /*this needs to shrink*/
 	{
 		case 's':
-			return(_puts(va_arg(args, char*)));
+			return (_puts(va_arg(args, char*)));
 			break;
 		case 'c':
 			return (_putchar(va_arg(args, int)));
