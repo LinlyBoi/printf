@@ -1,7 +1,7 @@
 #include "main.h"
 /**
- * _strlen - Returns the lenght of a string.
- * @s: Type char pointer
+ * _strlen - Returns the length.
+ * @s: char pointer
  * Return: c.
  */
 int _strlen(char *s)
@@ -14,8 +14,8 @@ int _strlen(char *s)
 
 }
 /**
- * _strlenc - Strlen function but applied for constant char pointer s
- * @s: Type char pointer
+ * _strlenc - char pointer
+ * @s: char pointer
  * Return: c
  */
 int _strlenc(const char *s)
@@ -29,7 +29,7 @@ int _strlenc(const char *s)
 
 /**
  * printf_string - print a string.
- * @val: argumen t.
+ * @val: argument.
  * Return: the length of the string.
  */
 
@@ -57,9 +57,9 @@ int printf_string(va_list val)
 }
 
 /**
- * printf_unsigned - prints integer
- * @args: argument to print
- * Return: number of characters printed
+ * printf_unsigned - integer
+ * @args: argument
+ * Return: number of chars printed
  */
 int printf_unsigned(va_list args)
 {
@@ -102,7 +102,7 @@ int printf_unsigned(va_list args)
 
 /**
  * printf_srev - function that prints a str in reverse
- * @args: type struct va_arg where is allocated printf arguments
+ * @args: va_arg arguments
  * Return: the string
  */
 int printf_srev(va_list args)

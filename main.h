@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+/* important libs */
+/* they bussin frfr*/
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
@@ -8,7 +10,7 @@
 #include <limits.h>
 
 /**
- * struct format - match the conversion specifiers
+ * struct format - conversion specifiers
  * @id:identifier
  * @f: type pointer
  */

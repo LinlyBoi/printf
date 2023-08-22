@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * printf_char - prints a char.
- * @val: arguments.
- * Return: 1.
+ * printf_char - char.
+ * @val: args
+ * Return: 1
  */
 int printf_char(va_list val)
 {
@@ -15,12 +15,13 @@ int printf_char(va_list val)
 }
 
 /**
- * printf_bin - prints a binary number.
+ * printf_bin - binary number.
  * @val: arguments.
- * Return: 1.
+ * Return: 1
  */
 int printf_bin(va_list val)
 {
+	/* inits */
 	int flag = 0;
 	int cont = 0;
 	int i, a = 1, b;
@@ -47,7 +48,7 @@ int printf_bin(va_list val)
 	return (cont);
 }
 /**
- * printf_HEX - prints an hexgecimal number.
+ * printf_HEX - prints an hexdecimal number.
  * @val: arguments.
  * Return: counter.
  */
@@ -81,8 +82,6 @@ int printf_HEX(va_list val)
 	free(arr);
 	return (counter);
 }
-
-#include "main.h"
 
 /**
  * printf_HEX_aux - prints an hexdecimal number.

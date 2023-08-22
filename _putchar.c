@@ -4,7 +4,7 @@
  * _putchar - print character
  * @c: character
  *
- * Return: 1 idk
+ * Return: 1
  */
 int _putchar(char c)
 {

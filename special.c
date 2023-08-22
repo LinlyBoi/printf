@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * printf_37 - prints the char 37.
+ * printf_37 - prints %
  * Return: 1.
  */
 int printf_37(void)
@@ -10,16 +10,18 @@ int printf_37(void)
 }
 
 /**
- * printf_rot13 - printf str to ROT13 place into buffer
- * @args: type struct va_arg where is allocated printf arguments
- * Return: counter
+ * printf_rot13 -  ROT13 CAESAR's AMAZING CIPHEER
+ * @args: STRING
+ * Return:coun
  */
 int printf_rot13(va_list args)
 {
 	int i, j, counter = 0;
 	int k = 0;
 	char *s = va_arg(args, char*);
+	/* basic alphabet */
 	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	/* shifted by 13 */
 	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
 
 	if (s == NULL)
@@ -46,7 +48,7 @@ int printf_rot13(va_list args)
 }
 
 /**
- * printf_pointer - prints an hexgecimal number.
+ * printf_pointer - prints an hexdecimal number.
  * @val: arguments.
  * Return: counter.
  */

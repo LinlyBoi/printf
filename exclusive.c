@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * printf_exclusive_string - print exclusuives string.
- * @val: argumen t.
+ * @val: argument.
  * Return: the length of the string.
  */
 
@@ -18,6 +18,7 @@ int printf_exclusive_string(va_list val)
 	{
 		if (s[i] < 32 || s[i] >= 127)
 		{
+			/* speical */
 			_putchar('\\');
 			_putchar('x');
 			len = len + 2;
@@ -27,6 +28,7 @@ int printf_exclusive_string(va_list val)
 				_putchar('0');
 				len++;
 			}
+			/* epic hex */
 			len = len + printf_HEX_aux(cast);
 		}
 		else
