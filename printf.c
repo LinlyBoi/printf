@@ -33,9 +33,6 @@ int _printf(const char *format, ...)
 			{
 				printed += _puts(buffer);
 				_memset(buffer, 0);
-				buffer = (char *) malloc(BUFF_SIZE);
-				if (!buffer)
-					return (-1);
 				buff_idx = 0;
 			}
 			printed += fmt(*(format + fmt_idx + 1), args);
@@ -51,19 +48,22 @@ int _printf(const char *format, ...)
 	}
 		return (printed);
 }
+/**
+ * fmt - format because its too chonky for printf
+ * @c: format character (for now)
+ * @args: the arguments to pop from
+ * Return: bytes written to stdout
+ */
 int fmt(char c, va_list args)
 {
 	switch (c) /*this needs to shrink*/
 	{
 		case 's':
 			return (_puts(va_arg(args, char*)));
-			break;
 		case 'c':
 			return (_putchar(va_arg(args, int)));
-			break;
 		case '%': /*add 1 byte*/
 			return (_putchar('%'));
-			break;
 		default:
 			return (0);
 	}
