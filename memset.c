@@ -4,19 +4,19 @@
  * _memset - sets values of bytes to specific value
  *
  * @adr: head address
- * @n: number of bytes
+ * @bval: number of bytes
  *
  * Return: pointer to place
  */
 
-char* _memset(char *str, int bval)
+char *_memset(char *adr, int bval)
 {
 	int i;
 
-	for (i = 0; i < _strlen(str); i++)
+	for (i = 0; i < _strlen(adr); i++)
 	{
-		*(str + i) = bval;
+		*(adr + i) = bval;
 	}
 
-	return (str);
+	return (adr);
 }

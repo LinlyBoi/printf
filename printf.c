@@ -26,9 +26,8 @@ int _printf(const char *format, ...)
 	if (!format) /* No string. No laundry */
 		return (0);
 
-	buff_idx = 0; /* was there a way to squish these together? */
-	fmt_idx = 0;
-	printed = 0;
+	buff_idx = fmt_idx = 0; /*chain assignment*/
+	printed = 0; /*this alone due to diff type*/
 	while (*(format + fmt_idx))
 	{
 		if ((*(format + fmt_idx) == '%') && (*(format + fmt_idx + 1)))
@@ -63,10 +62,10 @@ int _printf(const char *format, ...)
 			fmt_idx++;
 		}
 	}
-	if (buffer) /*final buffer check*/
+	if (buffer)
 	{
-		printed += _puts(buffer);
+		_puts(buffer);
 		free(buffer);
 	}
-	return (printed);
+		return (printed);
 }
